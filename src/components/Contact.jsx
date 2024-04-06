@@ -28,29 +28,29 @@ const Contact = () => {
   };
 
 
-  
- 
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     // Check if required fields are empty
     if (form.name.trim() === '' || form.email.trim() === '' || form.message.trim() === '') {
       alert('Please fill in all required fields.');
       return;
     }
-  
+
     setLoading(true);
-  
+
     emailjs
       .send(
         'service_5iqlj0q',
         'template_tacxsj5',
         {
           from_name: form.name,
-          to_name: "Ashwin vk",
+          to_name: "Muhammad Aslam",
           from_email: form.email,
-          to_email: "ashwinvk77@gmail.com",
+          to_email: "aslamka.2k3@gmail.com",
           message: form.message,
         },
         'TOP73uL7LxXc6jYYe'
@@ -59,7 +59,7 @@ const Contact = () => {
         () => {
           setLoading(false);
           alert("Thank you. I will get back to you as soon as possible.");
-  
+
           setForm({
             name: "",
             email: "",
@@ -69,12 +69,12 @@ const Contact = () => {
         (error) => {
           setLoading(false);
           console.error(error);
-  
+
           alert("Ahh, something went wrong. Please try again.");
         }
       );
   };
-  
+
 
   return (
     <div
@@ -110,7 +110,7 @@ const Contact = () => {
               name='email'
               value={form.email}
               onChange={handleChange}
-              placeholder="What's your web address?"
+              placeholder="What's your email address?"
               className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
             />
           </label>
