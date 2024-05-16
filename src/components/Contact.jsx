@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
+// import { toast } from "react-toastify";
 
 import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
@@ -37,6 +38,7 @@ const Contact = () => {
     // Check if required fields are empty
     if (form.name.trim() === '' || form.email.trim() === '' || form.message.trim() === '') {
       alert('Please fill in all required fields.');
+      // toast.error("Please fill in all required fields.")
       return;
     }
 
@@ -59,7 +61,7 @@ const Contact = () => {
         () => {
           setLoading(false);
           alert("Thank you. I will get back to you as soon as possible.");
-
+          // toast.success("Thank you. I will get back to you as soon as possible.")
           setForm({
             name: "",
             email: "",
