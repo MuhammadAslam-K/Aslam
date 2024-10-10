@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-// import { toast } from "react-toastify";
 
 import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
@@ -38,7 +37,6 @@ const Contact = () => {
     // Check if required fields are empty
     if (form.name.trim() === '' || form.email.trim() === '' || form.message.trim() === '') {
       alert('Please fill in all required fields.');
-      // toast.error("Please fill in all required fields.")
       return;
     }
 
@@ -46,8 +44,8 @@ const Contact = () => {
 
     emailjs
       .send(
-        'service_5iqlj0q',
-        'template_tacxsj5',
+        'service_e3lv26o', //'service_5iqlj0q',
+        "template_hsjj6le", //'template_tacxsj5',
         {
           from_name: form.name,
           to_name: "Muhammad Aslam",
@@ -55,13 +53,13 @@ const Contact = () => {
           to_email: "aslamka.2k3@gmail.com",
           message: form.message,
         },
-        'TOP73uL7LxXc6jYYe'
+        'mWp20BcrdXxaB_PoU'
       )
       .then(
-        () => {
+        (response) => {
           setLoading(false);
+          console.log('Email successfully sent!', response);
           alert("Thank you. I will get back to you as soon as possible.");
-          // toast.success("Thank you. I will get back to you as soon as possible.")
           setForm({
             name: "",
             email: "",
@@ -70,11 +68,11 @@ const Contact = () => {
         },
         (error) => {
           setLoading(false);
-          console.error(error);
-
+          console.error('Failed to send email:', error);
           alert("Ahh, something went wrong. Please try again.");
         }
       );
+
   };
 
 
